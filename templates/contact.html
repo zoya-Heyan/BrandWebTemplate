@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}联系我们 - 我的品牌{% endblock %}
+
+{% block content %}
+    <h2>给我们留言</h2>
+    <form method="POST" action="/contact">
+        <label for="name">姓名：</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="message">留言：</label><br>
+        <textarea id="message" name="message" rows="5" cols="40" required></textarea><br><br>
+
+        <button type="submit">提交</button>
+    </form>
+
+    {% if success %}
+        <p style="color: green;">感谢你的留言，{{ name }}！</p>
+    {% endif %}
+{% endblock %}

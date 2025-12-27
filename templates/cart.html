@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}购物车 - 我的品牌{% endblock %}
+
+{% block content %}
+<h2 style="text-align:center; margin-top: 20px;">购物车</h2>
+
+{% if cart_items %}
+    <table style="width: 80%; margin: 20px auto; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #f0f0f0;">
+                <th style="padding: 10px; border: 1px solid #ccc;">产品</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">单价（元）</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">数量</th>
+                <th style="padding: 10px; border: 1px solid #ccc;">小计（元）</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ccc;">
+                    <img src="{{ url_for('static', filename='images/' ~ item.product.image) }}" alt="{{ item.product.name }}" style="width: 80px; vertical-align: middle; margin-right: 10px;">
+                    {{ item.product.name }}
+                </td>
+                <td style="padding: 10px; border: 1px solid #ccc; text-align: center;">{{ item.product.price }}</td>
+                <td style="padding: 10px; border: 1px solid #ccc; text-align: center;">{{ item.quantity }}</td>
+                <td style="padding: 10px; border: 1px solid #ccc; text-align: center;">{{ item.subtotal }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" style="padding: 10px; border: 1px solid #ccc; text-align: right; font-weight: bold;">总计：</td>
+                <td style="padding: 10px; border: 1px solid #ccc; text-align: center; font-weight: bold;">{{ total_price }}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <div style="text-align: center; margin: 30px;">
+        <a href="{{ url_for('product_list') }}" style="padding: 10px 20px; background-color: #333; color: white; text-decoration: none; border-radius: 5px;">
+            继续购物
+        </a>
+    </div>
+{% else %}
+    <p style="text-align: center; margin-top: 50px;">您的购物车是空的。</p>
+    <div style="text-align: center; margin: 30px;">
+        <a href="{{ url_for('product_list') }}" style="padding: 10px 20px; background-color: #333; color: white; text-decoration: none; border-radius: 5px;">
+            去逛逛产品吧
+        </a>
+    </div>
+{% endif %}
+
+{% endblock %}

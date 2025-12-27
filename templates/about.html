@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}关于我们 - 我的品牌{% endblock %}
+
+{% block content %}
+    <h2>关于我们</h2>
+
+    <section style="max-width: 800px; margin: 0 auto; line-height: 1.8; text-align: left;">
+        <p>
+            欢迎来到 <strong>我的品牌</strong>，一个专注于高品质与创意结合的品牌。我们致力于用设计与科技为人们的日常生活带来更多灵感与便利。
+        </p>
+
+        <h3>我们的使命</h3>
+        <p>
+            打造既美观又实用的产品，提升每一位用户的生活体验。我们相信，细节决定品质，创意点亮未来。
+        </p>
+
+        <h3>我们的故事</h3>
+        <p>
+            我的品牌诞生于一个充满热情与梦想的团队。我们来自不同的背景，却有着共同的价值观和对产品的极致追求。从第一个产品设计，到如今多个系列上线，我们始终坚持初心，倾听用户的声音，不断优化与进步。
+        </p>
+
+        <h3>我们的团队</h3>
+        <p>
+            团队成员包括设计师、工程师、营销专家和用户体验研究者。我们相信跨学科的合作是创新的源泉。
+        </p>
+
+        <h3>未来愿景</h3>
+        <p>
+            我们希望成为行业中最值得信赖的品牌之一，将“中国制造”变成“中国创造”，走向全球市场。
+        </p>
+
+        <div style="margin-top: 30px;">
+            <a href="{{ url_for('contact') }}" style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px;">
+                联系我们
+            </a>
+        </div>
+    </section>
+{% endblock %}

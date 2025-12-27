@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #f7f7f7;
+}
+
+/* 幻灯片样式 */
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 500px; /* 你可以根据需要设置为 100vh 填满屏幕 */
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides img {
+    width: 100%;
+    height: 500px; /* 或使用 height: 100vh; */
+    object-fit: cover;
+}
+
+/* 淡入淡出动画 */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: 0.4}
+    to {opacity: 1}
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #2c3e50;
+    color: white;
+    padding-top: 20px;
+    transition: width 0.3s;
+    position: relative;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.brand-text {
+    font-size: 20px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: opacity 0.3s;
+}
+
+.sidebar.collapsed .brand-text {
+    display: none;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.nav-links li {
+    padding: 12px 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+.nav-links a:hover {
+    background-color: #34495e;
+    border-radius: 5px;
+}
+
+.toggle-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: #333;
+}

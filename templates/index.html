@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - 我的品牌{% endblock %}
+
+{% block content %}
+<!-- 幻灯片轮播图 -->
+<style>
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 500px;
+}
+
+.mySlides {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: slideIn 1s ease-in-out;
+}
+
+.mySlides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* 圆点导航 */
+.dots {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    z-index: 2;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.active {
+    background-color: rgba(255, 255, 255, 1);
+}
+</style>
+
+<div class="slideshow-container">
+    <div class="mySlides">
+        <img src="{{ url_for('static', filename='images/slide1.jpg') }}">
+    </div>
+    <div class="mySlides">
+        <img src="{{ url_for('static', filename='images/slide2.jpg') }}">
+    </div>
+    <div class="mySlides">
+        <img src="{{ url_for('static', filename='images/slide3.jpg') }}">
+    </div>
+
+    <!-- 圆点指示器 -->
+    <div class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+<script>
+let slideIndex = 1;
+showSlides();
+
+function showSlides() {
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].classList.add("active");
+
+    setTimeout(showSlides, 3000); // 每张图显示 3 秒
+}
+</script>
+
+<!-- 你原来的页面内容 -->
+<h2>欢迎来到我们的品牌世界</h2>
+<p>我们致力于打造高品质、富有创意的产品，为您的生活增添色彩。</p>
+
+<!-- 联系我们按钮 -->
+<div style="margin-top: 40px;">
+    <a href="{{ url_for('contact') }}" style="display: inline-block; padding: 10px 20px; background-color: #333; color: white; text-decoration: none; border-radius: 5px;">
+        联系我们
+    </a>
+</div>
+{% endblock %}

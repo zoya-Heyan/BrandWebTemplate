@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<a href="{{ url_for('cart') }}" style="position: fixed; top: 20px; right: 20px; font-size: 24px; color: #333; text-decoration: none;">
+    🛒
+    {% if cart_count > 0 %}
+    <span style="position: absolute; top: 10px; right: 10px; background: red; color: white; border-radius: 50%; padding: 2px 7px; font-size: 14px;">
+        {{ cart_count }}
+    </span>
+    {% endif %}
+</a>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}我的品牌{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧导航栏 -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+                <span class="brand-text" id="brandText">我的品牌</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">🏠 首页</a></li>
+                <li><a href="/about">📖 关于我们</a></li>
+                <li><a href="/products">🛍️ 产品</a></li>
+                <li><a href="/contact">📩 联系我们</a></li>
+            </ul>
+            <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        </nav>
+
+        <!-- 右侧页面主体 -->
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const brandText = document.getElementById('brandText');
+            sidebar.classList.toggle('collapsed');
+            if (sidebar.classList.contains('collapsed')) {
+                brandText.style.display = 'none';
+            } else {
+                brandText.style.display = 'inline';
+            }
+        }
+    </script>
+</body>
+</html>

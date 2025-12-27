@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}我们的产品 - 我的品牌{% endblock %}
+
+{% block content %}
+<h2 style="text-align: center; margin-top: 20px;">我们的产品</h2>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 40px;">
+    {% for product in products %}
+    <a href="{{ url_for('product_detail', product_id=product.id) }}" style="text-decoration: none; color: inherit;">
+        <div style="width: 300px; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); background-color: #fff; transition: transform 0.2s;">
+            <img src="{{ url_for('static', filename='images/' ~ product.image) }}" alt="{{ product.name }}" style="width: 100%; height: auto;">
+            <div style="padding: 15px;">
+                <h3 style="margin-bottom: 10px;">{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}
